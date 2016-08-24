@@ -39,11 +39,13 @@ typedef enum opr Operator;
     int val = (int)btn.tag;//property 값에 접근하기 위해서는 . 을 사용한다
     //NSInteger는 int의 확장기능제공. NSInteger는 long의 크기와 같기 때문에 형변환
     
-    if (currentOpr == none){
-        currentValue = currentValue * 10 + val;
-    }else{
-        currentValue = val;
-    }
+    currentValue = currentValue * 10 + val;
+    
+//    if (currentOpr == none){
+//        currentValue = currentValue * 10 + val;
+//    }else{
+//        currentValue = val;
+//    }
     
     
     self.myLabel.text = [NSString stringWithFormat:@"%d",currentValue]; //property접근하기 위해서는 self표시 해주어야 함.
@@ -52,6 +54,7 @@ typedef enum opr Operator;
 
 - (IBAction)clear:(id)sender {
     currentValue = 0;
+    currentOpr = none;
     self.myLabel.text = @"0";
 }
 
@@ -78,7 +81,7 @@ typedef enum opr Operator;
     }
     
     [calc setAccumulator:currentValue];
-    
+    currentValue = 0;
     
 }
 
